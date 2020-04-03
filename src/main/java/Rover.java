@@ -7,6 +7,17 @@ public class Rover extends Earth {
     public Rover(String name, int to, Position position) {
         this.name = name;
         this.position = position;
+
+        // Si la position de départ en X n'est pas dans les dimensions X de la Terre
+        if(this.position.x > this.maxX || this.position.x < this.minX) {
+            this.position.x = this.minX;
+        }
+
+        // Si la position de départ en Y n'est pas dans les dimensions Y de la Terre
+        if(this.position.y > this.maxY || this.position.y < this.minY) {
+            this.position.y = this.maxY;
+        }
+
         this.to = to;
     }
 
@@ -61,6 +72,32 @@ public class Rover extends Earth {
         }
 
         System.out.println(this);
+    }
+
+    public String getOrientation() {
+        switch (this.to) {
+            case 2:
+                return "V";
+            case 3:
+                return "<";
+            case 4:
+                return ">";
+            default:
+                return "∧";
+        }
+    }
+
+    public final void printMap() {
+        for(int y = this.maxY; y >= this.minY; y--) {
+            for(int x = this.minX; x <= this.maxX; x++) {
+                if(this.position.x == x && this.position.y == y) {
+                    System.out.print(this.getOrientation());
+                } else {
+                    System.out.print("*");
+                }
+            }
+            System.out.println("");
+        }
     }
 
     @Override

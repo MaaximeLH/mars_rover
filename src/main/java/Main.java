@@ -4,11 +4,13 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println("-------- Mars Rover --------");
-        Rover rover = new Rover("Wall-E", 1, new Position(5, 6));
+        Rover rover = new Rover("Wall-E", 2, new Position(10, 2));
         System.out.println(rover);
+
         Scanner in = new Scanner(System.in);
         int menu = 0;
         do {
+
             System.out.println("Que voulez-vous faire ?");
             System.out.println("1. Avancer");
             System.out.println("2. Reculer");
@@ -35,11 +37,10 @@ public class Main {
                     break;
                 default:
                     System.out.println("Hein ?");
-
             }
 
+            rover.printMap();
         } while (menu != 5);
-
     }
 
 }
